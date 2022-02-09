@@ -1,19 +1,22 @@
+const form = document.getElementById('form');
+const firstname = document.getElementById('name');
+const lastname = document.getElementById('namee2');
+const email = document.getElementById('email');
+const phone = document.getElementById('phone');
+const modal,fade = document.getElementById('modal');
 
-const name = document.getElementById('name')
-const email = document.getElementById('email')
-const phone = document.getElementById('phone')
-const form = document.getElementById('form')
-const errorElement = document.getElementById('error')
-// form.addEventListener('submit', (e) => {
-//     let messages = []
-//     e.preventDefault()
-//     if (name.value === ''|| name.value== null ) {
-//         console.log("name is required")
-//         messages.push('name is required')
-//     }
+form.addEventlistener('submit', e => {
+    e.preventDefault() ;
 
-//     if (messages.length > 0){
-//         e.preventDefault()
-//         errorElement.innerText = messages.join(', ')
-//     }
-// })
+    validateInputs() ;
+});
+
+const setError = (Element, message) => {
+    const inputControl = element.parentElement;
+    const errorDisplay = inputControl.querySelector(' .error');
+
+    errorDisplay.innerText = message;
+    inputControl.classList.add('error');
+    inputControl.classList.remove('success');
+
+}
